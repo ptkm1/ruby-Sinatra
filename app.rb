@@ -21,5 +21,25 @@ post '/usuario' do
   # Params get the body of requisition |
   # for store one object in the variable to send at response body, is necessary pass ['name of field']
 
-  { objeto: :obj }.to_json
+  { object: obj }.to_json
+end
+
+post '/login' do
+
+  obj =
+  {
+    email: params['email'],
+    password: params['password']
+  }
+
+  if params['email'] != ""
+    
+    if params['password'] != ""
+      { object: obj }.to_json
+    end
+
+  else
+    { message: 'Not authenticated'  }.to_json
+  end
+
 end
